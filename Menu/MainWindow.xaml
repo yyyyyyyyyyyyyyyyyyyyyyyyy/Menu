@@ -1,0 +1,38 @@
+﻿<Window x:Class="Menu.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Menu"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" FontSize="16" Background="LightBlue">
+            <MenuItem Header="Plik">
+                <MenuItem Command="New" />
+                <MenuItem Command="Open" Header="Otwórz">
+
+                </MenuItem>
+                <MenuItem Command="Save" />
+                <Separator/>
+                <MenuItem Command="Close" />
+            </MenuItem>
+            <MenuItem Header="Edycja">
+                <MenuItem x:Name="menuCopy" Command="Copy"/>
+                <MenuItem x:Name="menuCut" Command="Cut"/>
+                <MenuItem x:Name="menuPaste" Command="Paste" />
+            </MenuItem>
+            <MenuItem Header="Narzędzia" Click="MenuItem_Click">
+                <MenuItem x:Name="menuZawijanie" Header="Zawijaj" IsCheckable="True" IsChecked="True" Click="Zawijanie_Click"/>
+                <MenuItem x:Name="menuPowiekszanie" Header="Powiększ" Click="Powiekszanie_Click" />
+            </MenuItem>
+        </Menu>
+        <StackPanel DockPanel.Dock="Right" Width="100" Background="LightBlue">
+            <Button Content="Kopiuj" Margin="10" Command="Copy" CommandTarget="{Binding ElementName=mojTekst}" />
+            <Button Content="Wklej" Margin="10" Command="Paste" CommandTarget="{Binding ElementName=mojTekst}" />
+            <Button Content="Wytnij" Margin="10" Command="Cut" CommandTarget="{Binding ElementName=mojTekst}" />
+            
+        </StackPanel>
+        <TextBox x:Name="mojTekst" Background="AliceBlue" TextWrapping="Wrap"/>
+    </DockPanel>
+</Window>
